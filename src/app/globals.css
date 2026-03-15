@@ -1,0 +1,27 @@
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #111827;
+  --subtext: #4b5563;
+  --border: #e5e7eb;
+  --navy: #111827;
+  --soft: #f9fafb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --card: #111827;
+    --text: #f8fafc;
+    --subtext: #d1d5db;
+    --border: #334155;
+    --navy: #f8fafc;
+    --soft: #1e293b;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
