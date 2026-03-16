@@ -2,9 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
   const session = req.cookies.get("admin_session")?.value;
+  const pathname = req.nextUrl.pathname;
 
-  const isAdminRoute = req.nextUrl.pathname.startsWith("/admin");
-  const isLoginRoute = req.nextUrl.pathname.startsWith("/admin-login");
+  const isAdminRoute = pathname === "/admin" || pathname.startsWith("/admin/");
+  const isLoginRoute = pathname === "/admin-login";
 
   if (isAdminRoute && session !== "logged_in") {
     return NextResponse.redirect(new URL("/admin-login", req.url));
@@ -18,5 +19,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/admin-login"],
+  matcher: ["/admin", "/admin/:path*", "/admin-login"],
 };
